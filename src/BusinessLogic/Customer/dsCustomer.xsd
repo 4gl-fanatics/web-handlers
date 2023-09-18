@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="" xmlns:prodata="urn:schemas-progress-com:xml-prodata:0001">
+  <xsd:element name="dsCustomer" prodata:proDataSet="true">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="eCustomer" minOccurs="0" maxOccurs="unbounded" prodata:beforeTable="eCustomerBefore">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="CustNum" type="xsd:int" nillable="true" prodata:format=">>>>>>>>>9" prodata:label="Cust Num" prodata:help="Please enter a customer number."/>
+              <xsd:element name="Country" type="xsd:string" nillable="true" default="USA" prodata:format="x(20)" prodata:help="Please enter a country."/>
+              <xsd:element name="Name" type="xsd:string" nillable="true" prodata:format="x(30)" prodata:help="Please enter a name."/>
+              <xsd:element name="Address" type="xsd:string" nillable="true" prodata:format="x(35)" prodata:help="Please enter an address."/>
+              <xsd:element name="Address2" type="xsd:string" nillable="true" prodata:format="x(35)" prodata:help="Please enter an address."/>
+              <xsd:element name="City" type="xsd:string" nillable="true" prodata:format="x(25)" prodata:help="Please enter a city."/>
+              <xsd:element name="State" type="xsd:string" nillable="true" prodata:format="x(20)" prodata:help="Please enter standard state abbreviation."/>
+              <xsd:element name="PostalCode" type="xsd:string" nillable="true" prodata:format="x(10)" prodata:label="Postal Code" prodata:help="Please enter the appropriate Postal Code."/>
+              <xsd:element name="Contact" type="xsd:string" nillable="true" prodata:format="x(30)" prodata:help="Please enter a contact."/>
+              <xsd:element name="Phone" type="xsd:string" nillable="true" prodata:format="x(20)" prodata:help="Please enter a phone number"/>
+              <xsd:element name="SalesRep" type="xsd:string" nillable="true" prodata:format="x(4)" prodata:label="Sales Rep" prodata:help="Please Enter a Sales Rep."/>
+              <xsd:element name="CreditLimit" type="xsd:decimal" nillable="true" default="1500.0" prodata:format="->,>>>,>>9" prodata:label="Credit Limit" prodata:help="Please enter a Credit Limit." prodata:decimals="2"/>
+              <xsd:element name="Balance" type="xsd:decimal" nillable="true" prodata:format="->,>>>,>>9.99" prodata:help="Please enter a balance." prodata:decimals="2"/>
+              <xsd:element name="Terms" type="xsd:string" nillable="true" default="Net30" prodata:format="x(20)" prodata:help="Please enter terms"/>
+              <xsd:element name="Discount" type="xsd:int" nillable="true" prodata:format=">>9%" prodata:help="Please enter a percentage from 0 to 100."/>
+              <xsd:element name="Comments" type="xsd:string" nillable="true" prodata:format="x(80)" prodata:help="Please enter comments."/>
+              <xsd:element name="Fax" type="xsd:string" nillable="true" prodata:format="x(20)" prodata:help="Please enter a fax number."/>
+              <xsd:element name="EmailAddress" type="xsd:string" nillable="true" prodata:format="x(50)" prodata:label="Email" prodata:help="Please enter an full Internet Email Address."/>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+    <xsd:unique name="CustNum" prodata:primaryIndex="true">
+      <xsd:selector xpath=".//eCustomer"/>
+      <xsd:field xpath="CustNum"/>
+    </xsd:unique>
+  </xsd:element>
+  <xsd:annotation>
+    <xsd:appinfo>
+      <prodata:index name="Comments" prodata:wordIndex="true">
+        <prodata:table name="eCustomer"/>
+        <prodata:field name="Comments"/>
+      </prodata:index>
+      <prodata:index name="CountryPost">
+        <prodata:table name="eCustomer"/>
+        <prodata:field name="Country"/>
+        <prodata:field name="PostalCode"/>
+      </prodata:index>
+      <prodata:index name="Name">
+        <prodata:table name="eCustomer"/>
+        <prodata:field name="Name"/>
+      </prodata:index>
+      <prodata:index name="SalesRep">
+        <prodata:table name="eCustomer"/>
+        <prodata:field name="SalesRep"/>
+      </prodata:index>
+    </xsd:appinfo>
+  </xsd:annotation>
+</xsd:schema>
